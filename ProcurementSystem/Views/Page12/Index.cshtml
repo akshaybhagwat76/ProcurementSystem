@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label>General Ledger Account</label>
+                <select class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" />
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Account Currency</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Account Category</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Account Type</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="checkbox" class="form-check-inline" />Include Unposted
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <div class="col-md-4">
+            <fieldset class="border p-2">
+                <legend class="w-auto"style="font-size:18px">Base Currency</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Posted Balance</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Current Balance</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+               
+            </fieldset>
+            <fieldset class="border p-2">
+                <legend class="w-auto" style="font-size:18px">Account Currency</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>posted Balance</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Current Balance</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Dates</label>
+                <select class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>From</label>
+                <select class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>To</label>
+                <select class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                    <th>Entery Date</th>
+                    <th>Journal</th>
+                <th>Trnascation#</th>
+                <th>Loc/Sub loc</th>
+                <th>Source</th>
+                <th>Document</th>
+                <th>Account Type</th>
+                <th>Cust/Vendor Name</th>
+                <th>Payment Type</th>
+                <th>Rerference Number</th>
+                <th>Ref Date</th>
+                <th>Bank</th>
+                <th>Terms</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</form>

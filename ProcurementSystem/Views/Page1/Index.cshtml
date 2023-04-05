@@ -1,0 +1,202 @@
+﻿@model IndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Account</label>
+                    @*@Html.DropDownList("ACNT_Code", ViewBag.Account as SelectList,new { @class="form-control"})*@
+                    <select class="form-control" asp-for="AccountNo" onchange="loadDiscription()">
+                        @foreach(var v in ViewBag.Account)
+                        {
+                            <option value="@v.ACNT_Code">@v.ACNT_Code</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Account Description</label>
+                    <input asp-for="DESCRIPT" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Account Category</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>location/sublocation</label>
+                    <select class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>loc/sub-loc Description</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Account Currency</label>
+                    <input asp-for="Curr_Code" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="checkbox" class="form-check-inline" />Include sub cost centers
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Fiscal year</label>
+                    <select class="form-control" asp-for="@Model.FiscalYear" onchange="loadBalance()">
+                        @foreach (var x in ViewBag.FiscalYear)
+                        {
+                        <option value="@x.FISCAL_YR">@x.FISCAL_YR</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Previouse posted balance</label>
+                    <input asp-for="previouseBalance" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Current Posted balance</label>
+                    <input asp-for="currentBalance" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*@Html.Partial("LoadTableData.cshtml", Model);*@
+<div class="row no-gutters">
+    <div class="col-md-6">
+        <div class="card">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3">2005</th>
+                    </tr>
+                    <tr>
+                        <th>Period</th>
+                        <th>Balance</th>
+                        <th>Activity</th>
+                      
+                    </tr>
+                </thead>
+                <tbody  id="t1">
+                   
+                   
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <thead id="h1">
+                <tr>
+                  
+                    <th colspan="3" id="h1">2004</th>
+                </tr>
+                <tr>
+                    
+                    <th>Previouse Period</th>
+                    <th>Previouse balance</th>
+                    <th>Previouse activity</th>
+                </tr>
+            </thead>
+            <tbody id="t2">
+             
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        loadDiscription();
+        loadBalance();
+});
+function loadDiscription() {
+    var AccountNo = $("#AccountNo").find(":selected").val();
+    $.get("/Page1/LoadData", { AccountNo: AccountNo }, function (res) {
+        document.getElementById("DESCRIPT").value = res.descript;
+        document.getElementById("Curr_Code").value = res.curR_Code
+;
+    })
+   
+    }
+    function loadBalance() {
+        document.getElementById("currentBalance").value = 0;
+        document.getElementById("previouseBalance").value = 0;
+         var year = $("#FiscalYear").find(":selected").val();
+         $.get("/Page1/LoadBalance", { year: year }, function (res) {
+             document.getElementById("currentBalance").value = res.currentbalance;
+             document.getElementById("previouseBalance").value = res.previousBalance;
+         })
+        loadTableData();
+    }
+    function loadTableData() {
+        $("#t1").empty();
+        var total1 = 0;
+        var year = $("#FiscalYear").find(":selected").val();
+        $.get("Page1/LoadTableData", { year: year }, function (res) {
+
+
+           
+            res.forEach(function (dt) {
+                total1 += dt.activity;
+                $("#t1").append("<tr>" +
+                    "<td>" + dt.perioddesc + "</td>" +
+                    "<td>" + dt.balance + "</td>" +
+                    "<td>" + dt.activity + "</td>"
+                    + "</tr>")
+            })
+             $("#t1").append("<tr>" +
+                "<td colspan='2'>" + "</td>" + "<td>" + total1 + "</td>");
+        });
+          $("#t2").empty();
+
+        var year = $("#FiscalYear").find(":selected").val();
+        $.get("Page1/LoadSecondTableData", { year: year }, function (res) {
+            
+            var total = 0;
+            console.log(res);
+            res.forEach(function (dt) {
+                total += dt.previouseyearactivity;
+                $("#t2").append("<tr>" +
+                    "<td>" + dt.perviousyeardesc + "</td>" +
+                    "<td>" + dt.previouseyearbalance + "</td>" +
+                    "<td>" + dt.previouseyearactivity + "</td>"
+                    + "</tr>")
+            })
+            $("#t2").append("<tr>" +
+                "<td colspan='2'>" + "</td>" + "<td>" + total + "</td>");
+        })
+    }
+</script>

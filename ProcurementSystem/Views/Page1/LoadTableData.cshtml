@@ -1,0 +1,78 @@
+﻿@model IndexVM
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <div class="card">
+                <table class="table table-bordered" id="t1">
+                    <thead>
+                        <tr>
+                            <th colspan="3">2008</th>
+                        </tr>
+                        <tr>
+                            <th>Period</th>
+                            <th>Balance</th>
+                            <th>Activity</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in Model.periodbalances)
+                        {
+                            <tr>
+
+                                <td>@t.perioddesc</td>
+                                <td>@t.balance</td>
+                                <td>@t.activity</td>
+
+                            </tr>
+                        }
+                    
+
+                      
+                     
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3">2007</th>
+                    </tr>
+                    <tr>
+
+                        <th>Previouse Period</th>
+                        <th>Previouse balance</th>
+                        <th>Previouse activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.table2 != null)
+                    {
+                        @foreach (var t in ViewBag.table2)
+                        {
+
+                            <tr>
+
+
+                                <td>@t.perviousyeardesc</td>
+                                <td>@t.previouseyearbalance</td>
+                                <td>@t.previouseyearactivity</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
