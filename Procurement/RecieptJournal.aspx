@@ -1,0 +1,164 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RecieptJournal.aspx.cs" Inherits="Procurement.RecieptJournal" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
+<form style="background-color:grey">
+    <fieldset class="border p-2">
+        <legend class="w-auto">Journals</legend>
+        <div class="row" style="margin-top:-20px;">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Journal #</label>
+                    <select class="form-control">
+                        <option>select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>Fiscal Year</label>
+                    <select class="form-control">
+                        <option>select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>Period</label>
+                    <select class="form-control">
+                        <option>select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Journal Group</label>
+                    <select class="form-control">
+                        <option>select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:-10px">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Bank</label>
+                    <select disabled class="form-control">
+                        <option>select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Bank Description</label>
+                    <input type="text" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Bank Currency</label>
+                    <input type="text" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="border p-2">
+        <legend class="w-auto">Transaction</legend>
+        <div class="row" style="margin-top:-20px">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Transaction #</label>
+                    <select class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Date</label>
+                    <select class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Source</label>
+                    <select class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Payment Type</label>
+                    <select class="form-control"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="line-height:10px">
+                <p>ACCES SAMPLE COMPANY</p>
+                <p>123 Any Street</p>
+                <p>123456789</p>
+                <hr />
+            </div>
+            <div class="col-md-1 mt-3">
+                pay to the order of
+                zero and 00/100
+            </div>
+            <div class="col-md-3 mt-3">
+                <select class="form-control"></select>
+            </div>
+            <div class="col-md-3 offset-1" style="line-height:10px">
+                <p>Computer Check</p>
+                <hr />
+                <p>Date @DateTime.Now.ToShortDateString()</p>
+                <hr />
+                <p>0.00%</p>
+                <hr />
+            </div>
+
+        </div>
+        <hr />
+        <div class="col-md-12">
+            <b>For Mehrab Shaida Zazai</b>
+        </div>
+    </fieldset>
+    <fieldset class="border p-2">
+        <legend>Transaction Entries</legend>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Entry Type</th>
+                    <th>Document #</th>
+                    <th>Document</th>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
+</asp:Content>

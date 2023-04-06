@@ -1,0 +1,102 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Page13.aspx.cs" Inherits="Procurement.Page13" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <form>
+    <div class="row">
+        <div class="col-md-8 border-right">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Account</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Account description</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Account description</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>locaton/sublocation</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>loc/sub loc description</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Account Currency</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="checkbox" class="form-check-inline" />Include sub-cost centers
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Fiscal Year</label>
+                <select class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label>Proviouse Posted Balance</label>
+                <input class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Current Posted Balance</label>
+                <input class="form-control">
+            </div>
+        </div>
+
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="3">2023</th>
+                <th colspan="3">2022</th>
+            </tr>
+            <tr>
+                <th>Period</th>
+                <th>Balance</th>
+                <th>Activity</th>
+                <th>Previouse Period</th>
+                <th>Previouse balance</th>
+                <th>Previouse activity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                        <td colspan="2"></td>
+                <td></td>
+                <td colspan="2"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+</asp:Content>
