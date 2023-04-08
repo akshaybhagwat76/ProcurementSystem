@@ -25,17 +25,24 @@ namespace ProcurementSystem.Controllers
             ViewBag.Account = list;
             return View();
         }
+        //[Route("page1/Page1/LoadData/{AccountNo}")]
         public IActionResult LoadData(string AccountNo)
         {
             var data = dal.loadData(AccountNo);
             return Json(data);
         }
         [HttpGet]
+
+        //[Route("page1/Page1/LoadBalance/{year}")]
+
         public IActionResult LoadBalance(string year)
         {
             var data = dal.LoadBalances(year);
             return Json(data);
         }
+        //[Route("page1/Page1/LoadSecondTableData/{year}")]
+
+        
         public IActionResult LoadTableData(string year)
         {
             var data = dal.loadTableData(year);
