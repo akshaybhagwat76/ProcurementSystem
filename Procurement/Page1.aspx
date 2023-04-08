@@ -142,25 +142,17 @@
 
     <br />
     <br />
-      <div class="container">
-    <div class="row "  >
+      
+    <div class="row card "  >
        
-        <div class="col-sm-5   ">
-           
-     
-        
-           
-    <asp:GridView ID="gridService"        runat="server" CssClass="table " AutoGenerateColumns="false" ShowFooter="true">  
+        <div class="col-sm-4 card-body   ">
+         <span runat="server" id="tbl1"></span>   
+    <asp:GridView ID="gridService"   OnRowDataBound="gridService_RowDataBound"       runat="server" CssClass="table " AutoGenerateColumns="false" ShowFooter="true">  
         
                     <Columns>  
-                        
-                       
-                            
-                               
                          
                         <asp:TemplateField   HeaderText="Period">  
-                            
-
+                             
                             <ItemTemplate>  
                                 <asp:Label ID="Period" runat="server"  
                                   Text='<%#Eval("perioddesc")%>'></asp:Label>  
@@ -173,49 +165,61 @@
                                
                              
                         </asp:TemplateField>  
-                          <asp:TemplateField   HeaderText="Activity">  
+                          <asp:TemplateField      HeaderText="Activity">  
                             <ItemTemplate>  
-                                <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("activity")%>'></asp:Label>  
+                                <asp:Label ID="lblActivity" runat="server" Text='<%#Eval("activity")%>'></asp:Label>  
                             </ItemTemplate>  
+                              <FooterTemplate>
+                                  <asp:Label ID="TotalActivity" runat="server" ></asp:Label> 
+                              </FooterTemplate>
+
                                
                              
                         </asp:TemplateField>  
+                         
+
                          
                     </Columns>  
                 </asp:GridView>  
            
 
-                </div>
+           </div>    
             
-    <div class="col-sm-7  ">
+    <div class="col-sm-7 card-body  " style="position:absolute;left:409px;">
    
-      
-      <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="false" ShowFooter="true">  
+         <span id="tbl2" runat="server"></span> 
+      <asp:GridView ID="GridView1" OnRowDataBound="GridView1_RowDataBound" runat="server" CssClass="table" AutoGenerateColumns="false" ShowFooter="true">  
                     <Columns>  
                     
 
-                          <asp:TemplateField ItemStyle-Width="600px" HeaderText="Previous year period">  
+                          <asp:TemplateField   HeaderText="Previous year period">  
                             <ItemTemplate>  
                                 <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("perviousyeardesc")%>'></asp:Label>  
                             </ItemTemplate>  
                                
                              
                         </asp:TemplateField>  
-                          <asp:TemplateField ItemStyle-Width="600px" HeaderText="Previous Year Balance">  
+                          <asp:TemplateField   HeaderText="Previous Year Balance">  
                             <ItemTemplate>  
                                 <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("previouseyearbalance")%>'></asp:Label>  
                             </ItemTemplate>  
+                               <FooterTemplate>
+                                  <asp:Label ID="previousyearbalance" runat="server" ></asp:Label> 
+                              </FooterTemplate>
                                
                              
                         </asp:TemplateField>  
-                          <asp:TemplateField ItemStyle-Width="600px" HeaderText="Previous year activity">  
+                          <asp:TemplateField   HeaderText="Previous year activity">  
                             <ItemTemplate>  
                                 <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("previouseyearactivity")%>'></asp:Label>  
                             </ItemTemplate>  
+                               <FooterTemplate>
+                                  <asp:Label ID="previousyearactivity" runat="server" ></asp:Label> 
+                              </FooterTemplate>
                                
                              
                         </asp:TemplateField>  
-                          <asp:TemplateField ItemStyle-Width="600px" HeaderText="Balance Year">  
+                          <asp:TemplateField   HeaderText="Balance Year">  
                             <ItemTemplate>  
                                 <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("balancyear")%>'></asp:Label>  
                             </ItemTemplate>  
@@ -233,7 +237,7 @@
         </div>
         
 </div>
-        </div>
+     
 
 <%--<script>
     $(document).ready(function () {
