@@ -13,7 +13,7 @@ namespace ProcurementSystem.Models.ViewModels
         public string Curr_Code { get; set; }
         public string year { get; set; }
         public string currentBalance { get; set; }
-        public string previouseBalance { get; set; }
+        public string previousBalance { get; set; }
         public List<Periodbalance> periodbalances { get; set; }
         public List<Periodbalance> perioddbalances1 { get; set; }
     }
