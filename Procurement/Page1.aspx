@@ -14,7 +14,7 @@
                             <option value="@v.ACNT_Code">@v.ACNT_Code</option>
                         }
                     </select>--%>
-                    <asp:DropDownList runat="server" CssClass="form-control" id="account">
+                    <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="account_SelectedIndexChanged" runat="server" CssClass="form-select" id="account">
 
                     </asp:DropDownList>
 
@@ -23,7 +23,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Account Description</label>
-                    <input asp-for="DESCRIPT" disabled class="form-control" />
+                    <input asp-for="DESCRIPT"  runat="server" id="descript"   disabled class="form-control" />
                 </div>
             </div>
             <div class="col-md-3">
@@ -49,7 +49,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Account Currency</label>
-                    <input asp-for="Curr_Code" disabled class="form-control" />
+                    <input asp-for="Curr_Code" id="currency" runat="server"   disabled class="form-control" />
                 </div>
             </div>
         </div>
@@ -66,17 +66,17 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Fiscal year</label>
-                 <asp:DropDownList id="DropDownList1"  AutoPostBack = "true"  OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  CssClass="form-control" runat="server" > 
+                 <asp:DropDownList id="DropDownList1"   AutoPostBack = "true"  OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  CssClass="form-select" runat="server" > 
   
-</asp:DropDownList>  
+             </asp:DropDownList>  
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Previouse posted balance</label>
-                    <input asp-for="previouseBalance" disabled class="form-control" />
+                    <label>Previous posted balance</label>
+                    <input asp-for="previouseBalance" runat="server" id="previousYearBal" disabled class="form-control" />
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Current Posted balance</label>
-                    <input asp-for="currentBalance" disabled class="form-control" />
+                    <input asp-for="currentBalance" runat="server" id="currentbalance" disabled class="form-control" />
                 </div>
             </div>
         </div>
@@ -134,23 +134,46 @@
             </tbody>
         </table>
     </div>--%>
-    <h1>Table 1</h1>
-    <asp:GridView ID="gridService" runat="server" CssClass="EU_DataTable" AutoGenerateColumns="false" ShowFooter="true">  
+   
+
+  
+
+</div>
+
+    <br />
+    <br />
+      <div class="container">
+    <div class="row "  >
+       
+        <div class="col-sm-5   ">
+           
+     
+        
+           
+    <asp:GridView ID="gridService"        runat="server" CssClass="table " AutoGenerateColumns="false" ShowFooter="true">  
+        
                     <Columns>  
-                        <asp:TemplateField ItemStyle-Width="630px" HeaderText="Period">  
+                        
+                       
+                            
+                               
+                         
+                        <asp:TemplateField   HeaderText="Period">  
+                            
+
                             <ItemTemplate>  
                                 <asp:Label ID="Period" runat="server"  
                                   Text='<%#Eval("perioddesc")%>'></asp:Label>  
                             </ItemTemplate>  
                         </asp:TemplateField>  
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Balance">  
+                        <asp:TemplateField   HeaderText="Balance">  
                             <ItemTemplate>  
                                 <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("balance")%>'></asp:Label>  
                             </ItemTemplate>  
                                
                              
                         </asp:TemplateField>  
-                          <asp:TemplateField ItemStyle-Width="600px" HeaderText="Activity">  
+                          <asp:TemplateField   HeaderText="Activity">  
                             <ItemTemplate>  
                                 <asp:Label ID="lblBalance" runat="server" Text='<%#Eval("activity")%>'></asp:Label>  
                             </ItemTemplate>  
@@ -160,10 +183,14 @@
                          
                     </Columns>  
                 </asp:GridView>  
-    <br />
-    <br />
-    <h1>Table 2</h1>
-      <asp:GridView ID="GridView1" runat="server" CssClass="EU_DataTable" AutoGenerateColumns="false" ShowFooter="true">  
+           
+
+                </div>
+            
+    <div class="col-sm-7  ">
+   
+      
+      <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="false" ShowFooter="true">  
                     <Columns>  
                     
 
@@ -202,10 +229,11 @@
                       
                      
                     </Columns>  
-                </asp:GridView>  
-
-
+                </asp:GridView> 
+        </div>
+        
 </div>
+        </div>
 
 <%--<script>
     $(document).ready(function () {
